@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, ScrollView, Alert } from "react-native";
 import TileBar from "./src/module/TileBar";
-import itemModule from "./src/module/itemModule";
+import OpenQrCode from "./src/module/openQrCode";
 import ItemModule from "./src/module/itemModule";
-
+import color from "./task/color";
 export default function App() {
   const [taskList, setTaskList] = useState([]);
+  
   const handlerAddTask = (task) => {
     // add task
     setTaskList([...taskList, task]);
@@ -30,6 +31,7 @@ export default function App() {
   return (
     <ScrollView style={styles.container}>
       <TileBar onAddTask={handlerAddTask}></TileBar>
+      <OpenQrCode></OpenQrCode>
       {taskList.map((item, index) => {
         return (
           <ItemModule
@@ -49,6 +51,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#e2fefe",
+    backgroundColor: color.backgroud,
   },
 });

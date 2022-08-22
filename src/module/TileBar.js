@@ -9,7 +9,7 @@ import {
 import styles from "../../task/style";
 
 const TileBar = (props) => {
-  const [task, setTask] = React.useState("");
+  const [task, setTask] = useState("");
   const onclick = () => {
     props.onAddTask(task);
     setTask('')
@@ -20,7 +20,7 @@ const TileBar = (props) => {
       <TextInput
       value={task}
         style={styles.TextBox}
-        placeholder="input"
+        placeholder="Ghi chú mới"
         caretHidden
         onChangeText={(text) => setTask(text)}
         onSubmitEditing ={onclick}

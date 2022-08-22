@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-
+import color from "./color";
 const styles = StyleSheet.create({
     //tileBar
     containerTitleBar: {
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
       TextBox:{
         flex:4,
         padding: 20,
-        backgroundColor: "#FFEFD5",
+        backgroundColor: color.textBox,
         borderWidth: 1,
         borderColor: "black",
         borderRadius: 10,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
       item: {
         margin: 15,
         padding: 10,
-        backgroundColor: "white",
+        backgroundColor: color.instructions,
         borderWidth: 1,
         borderColor: "black",
         borderRadius: 10,
@@ -55,19 +55,34 @@ const styles = StyleSheet.create({
       },
       instructions: {
         textAlign: "center",
-        color: "white",
+        color: color.instructions,
         fontSize:30
       },
       button :{
         flex:1,
         width:50,
         height:50,
-        backgroundColor: "#4285f4",
+        backgroundColor: color.button,
         borderColor: "black",
         borderWidth: 1,
         borderRadius:1000,
         justifyContent:"center",
         alignItems:"center"
-      }
+      },
+      buttonQr :{
+        flex:1,
+        marginHorizontal: 50,
+        height:50,
+        backgroundColor: color.button,
+        borderColor: "black",
+        borderWidth: 1,
+        borderRadius:1000,
+        justifyContent:"center",
+        alignItems:"center"
+      },container: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+      },
 })
 export default styles;
