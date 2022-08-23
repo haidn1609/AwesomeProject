@@ -10,11 +10,7 @@
     <p>Ứng dụng thêm, xóa ghi chú</p>
     <img src="https://b-f5-zpcloud.zdn.vn/7912343819019145872/b52ae87234b7f1e9a8a6.jpg" alt="">
     <img src="https://b-f5-zpcloud.zdn.vn/6908890098189798446/9640720eaecb6b9532da.jpg" alt="">
-    <video width="320" height="240" controls>
-      <source
-        src="https://f20-zvc.zdn.vn/4c0f7744928e7ad0239f/6117026163934096361"
-        type="video/mp4"
-      />
-    </video>
+    <img src="https://b-f7-zpcloud.zdn.vn/5594003828121171671/6eed4319eedb2b8572ca.jpg" alt="">
+    <img src="https://b-f7-zpcloud.zdn.vn/4029787711199957095/d29c0850a59260cc3983.jpg" alt="">
 </body>
 </html>
