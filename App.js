@@ -1,56 +1,25 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, ScrollView, Alert } from "react-native";
-import TileBar from "./src/module/TileBar";
-import OpenQrCode from "./src/module/openQrCode";
-import ItemModule from "./src/module/itemModule";
-import color from "./task/color";
-export default function App() {
-  const [taskList, setTaskList] = useState([]);
-  
-  const handlerAddTask = (task) => {
-    // add task
-    setTaskList([...taskList, task]);
-  };
-  const handlerDeleteTask = (index) => {
-    // remove task
-    Alert.alert("Thông báo", "Bạn có muốn xóa task này không", [
-      {
-        text: "Hủy",
-        onPress: () => {
-          
-        },
-      },
-      {
-        text: "Đồng ý",
-        onPress: () => {let taskListTmp = [...taskList];
-          taskListTmp.splice(index, 1);
-          setTaskList(taskListTmp);},
-      },
-    ]);
-  };
+import HomeScreen from "./src/Screen/HomeScreen";
+import ScannerScreen from "./src/Screen/ScannerScreen";
+import { NavigationContainer } from "@react-navigation/native/";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from "@react-navigation/stack";
+
+const Stact = createStackNavigator();
+
+function App() {
   return (
-    <ScrollView style={styles.container}>
-      <TileBar onAddTask={handlerAddTask}></TileBar>
-      <OpenQrCode></OpenQrCode>
-      {taskList.map((item, index) => {
-        return (
-          <ItemModule
-            key={index}
-            title={item}
-            number={index + 1}
-            onDeleteTask={() => {
-              handlerDeleteTask(index);
-            }}
-          ></ItemModule>
-        );
-      })}
-    </ScrollView>
+    <Stact.Navigator initialRouteName="Home">
+      <Stact.Screen name="Home" component={HomeScreen} options= {{headerShown: null}}/>
+      <Stact.Screen name="Scanner" component={ScannerScreen}/>
+    </Stact.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: color.backgroud,
-  },
-});
+export default ()=>{
+  return(
+    <NavigationContainer>
+      <App/>
+    </NavigationContainer>
+  )
+}

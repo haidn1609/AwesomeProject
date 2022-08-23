@@ -20,7 +20,7 @@ const TileBar = (props) => {
       <TextInput
       value={task}
         style={styles.TextBox}
-        placeholder="Ghi chú mới"
+        placeholder="Ghi chú mới."
         caretHidden
         onChangeText={(text) => setTask(text)}
         onSubmitEditing ={onclick}

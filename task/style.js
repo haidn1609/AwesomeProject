@@ -1,7 +1,12 @@
 import { StyleSheet } from "react-native";
 import color from "./color";
 const styles = StyleSheet.create({
-    //tileBar
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: color.backgroud
+  } , 
+  //tileBar
     containerTitleBar: {
         padding:20,
         justifyContent: "flex-start",
@@ -70,19 +75,13 @@ const styles = StyleSheet.create({
         alignItems:"center"
       },
       buttonQr :{
-        flex:1,
         marginHorizontal: 50,
         height:50,
         backgroundColor: color.button,
         borderColor: "black",
         borderWidth: 1,
         borderRadius:1000,
-        justifyContent:"center",
-        alignItems:"center"
-      },container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
+   
       },
 })
 export default styles;
