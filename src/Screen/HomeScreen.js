@@ -34,11 +34,6 @@ const HomeScreen = ({navigation,route}) => {
       },
     ]);
   };
-  // set data callback from qr code
-  
-  const task= route.params
-  //
-  
   
   return (
    <SafeAreaView style={styles.container}>
@@ -51,6 +46,22 @@ const HomeScreen = ({navigation,route}) => {
         }}
       >
         <Text style={styles.instructions}> Click Scan Qr Code</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.buttonQr,{margin: 10}]}
+        onPress={() => {
+          navigation.navigate("ScannerText",{onAdd:handlerAddTask});
+        }}
+      >
+        <Text style={styles.instructions}> Click Scan Text</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.buttonQr,{margin: 10}]}
+        onPress={() => {
+          navigation.navigate("OpenCamera",{onAdd:handlerAddTask});
+        }}
+      >
+        <Text style={styles.instructions}> Click OpenCamera</Text>
       </TouchableOpacity>
       {taskList.map((item, index) => {
         return (

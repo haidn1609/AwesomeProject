@@ -25,7 +25,7 @@ const ScannerScreen = ({navigation,route}) => {
     setscanner(true);
     console.log("Barcode with type " + type + "and data " + data + "scan success");
     task.onAdd(data)
-    navigation.navigate("Home",{task: "succes"})
+    navigation.navigate("Home")
   };
   // when no have permission or request false
   if (hasPermission == null) {
