@@ -7,7 +7,7 @@ import styles from "../../task/style";
 const ScanTextScreen = ({ navigation, route }) => {
   const task = route.params;
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
   // picImage
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -16,12 +16,13 @@ const ScanTextScreen = ({ navigation, route }) => {
       //allowsEditing: false, crop image = ?
       //aspect: [1, 1], crop image size width/height
       quality: 1,
-      base64: true,
+      //base64: true,
     });
 
     if (!result.cancelled) {
       setImage(result.uri);
-      task.onAdd(image.uri);
+      console.log(result);
+      task.onAdd(result.uri);
     }
   };
  

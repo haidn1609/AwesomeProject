@@ -1,14 +1,23 @@
 import { AutoFocus, Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
-
-import React, { useState, useRef } from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import * as Permissions from "expo-permissions";
+import React, { useState, useRef, useEffect } from "react";
+import { Button, StyleSheet, Text, TouchableOpacity, View, SafeAreaView,Image } from "react-native";
 
 export default function OpenCamera() {
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
-  const [image, setImage] = useState(null);
-  const cam = useRef()
+  const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
+  const [image, setImage] = useState();
+  const cam = useRef();
+
+  useEffect(() => {
+    (async () => {
+      const mediaLibraryPermission =
+        await MediaLibrary.requestPermissionsAsync();
+      setHasMediaLibraryPermission(mediaLibraryPermission.status === "granted");
+    })();
+  }, []);
 
   if (!permission) {
     // Camera permissions are still loading
@@ -36,16 +45,20 @@ export default function OpenCamera() {
   const takeImage = async () => {
     if (cam.current) {
       const options = { quality: 0.5, base64: true, skipProcessing: true };
-      let photo = await cam.current.takePictureAsync(options);
-
-      //console.log(cam.current.getSupportedRatiosAsync());
-
-      const source = photo.uri;
-      cam.current.pausePreview();
-      console.log(source);
-      cam.current.resumePreview();
+      let newPhoto = await cam.current.takePictureAsync(options);
+      setImage(newPhoto);
+      console.log(newPhoto.uri);
     }
   };
+  if (image) {
+    let saveImage = ()=>{
+        MediaLibrary.saveToLibraryAsync(image.uri).then(() => {
+          setImage(undefined);
+        });
+    };
+    saveImage();
+    console.log("save success");
+  }
   return (
     <View style={styles.container}>
       <Camera
@@ -58,9 +71,15 @@ export default function OpenCamera() {
           <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
             <Text style={styles.text}>Flip Camera</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={takeImage}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              takeImage();
+            }}
+          >
             <Text style={styles.text}>Take</Text>
           </TouchableOpacity>
+          <Text>{image ? image.width : 0}</Text>
         </View>
       </Camera>
     </View>

@@ -81,7 +81,9 @@ const styles = StyleSheet.create({
         borderColor: "black",
         borderWidth: 1,
         borderRadius:1000,
-   
+      }, scanner: {
+        flex: 1,
+        aspectRatio: undefined
       },
 })
 export default styles;

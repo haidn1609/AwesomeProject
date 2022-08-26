@@ -7,11 +7,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { LogBox } from "react-native";
 import ScanTextScreen from "./src/Screen/ScanTextScreen";
 import OpenCamera from "./src/Screen/OpenCamera";
-
+import ScanDocText from "./src/Screen/ScanDocText"
 const Stact = createStackNavigator();
 
 function App() {
-  //LogBox.ignoreAllLogs();
+  LogBox.ignoreAllLogs();
   return (
     <Stact.Navigator initialRouteName="Home">
       <Stact.Screen
@@ -22,6 +22,7 @@ function App() {
       <Stact.Screen name="Scanner" component={ScannerScreen} />
       <Stact.Screen name="ScannerText" component={ScanTextScreen} />
       <Stact.Screen name="OpenCamera" component={OpenCamera} />
+      <Stact.Screen name="ScanDoc" component={ScanDocText} />
     </Stact.Navigator>
   );
 }

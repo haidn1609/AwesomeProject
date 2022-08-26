@@ -63,6 +63,14 @@ const HomeScreen = ({navigation,route}) => {
       >
         <Text style={styles.instructions}> Click OpenCamera</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.buttonQr,{margin: 10}]}
+        onPress={() => {
+          navigation.navigate("ScanDoc");
+        }}
+      >
+        <Text style={styles.instructions}> ScanDoc</Text>
+      </TouchableOpacity>
       {taskList.map((item, index) => {
         return (
           <ItemModule
